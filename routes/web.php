@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 use App\Http\Livewire\Home;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,6 @@ Route::get('/', function () {
   return view('pages.home');
 });
 
-Route::post('/admin/add', [AdminController::class, 'store']);
+// Route::post('/admin/add', [AdminController::class, 'store']);
+
+Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
