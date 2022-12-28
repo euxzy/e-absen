@@ -21,6 +21,11 @@ Route::get('/', function () {
   return view('pages.home');
 });
 
-// Route::post('/admin/add', [AdminController::class, 'store']);
-
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+
+Route::prefix('/admin')
+  ->controller(AdminController::class)
+  ->name('admin.')->group(function () {
+    Route::get('/add', 'create')->name('add');
+    Route::post('/store', 'store')->name('store');
+  });

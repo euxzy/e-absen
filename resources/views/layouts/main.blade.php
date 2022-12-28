@@ -14,7 +14,7 @@
 <body class="bg-[#E5E5E5]">
   {{-- @livewire('partials.navbar') --}}
 
-  <main>
+  <main class="font-exo">
     @yield('content')
   </main>
 
