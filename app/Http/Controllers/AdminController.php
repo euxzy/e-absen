@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,13 +14,15 @@ class AdminController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
         $payload = [
             'nama' => $request->nama,
             'username' => $request->username,
             'email' => $request->email,
             'password' => $request->password
         ];
-        dd($payload);
+        // dd($payload);
+
+        Admin::query()->create($payload);
+        return redirect(route('auth.login'));
     }
 }
