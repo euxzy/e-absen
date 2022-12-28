@@ -5,16 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Absensi Siswa</title>
+  <title>@yield('title') | Absensi Siswa</title>
 
   @livewireStyles
   @vite('resources/css/app.css')
 </head>
 
-<body>
-  @livewire('partials.navbar')
+<body class="bg-[#E5E5E5]">
+  {{-- @livewire('partials.navbar') --}}
 
-  {{ $slot }}
+  <main>
+    @yield('content')
+  </main>
 
   @livewireScripts
 </body>

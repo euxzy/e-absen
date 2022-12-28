@@ -9,7 +9,11 @@ module.exports = {
         container: {
             center: true,
         },
-        extend: {},
+        extend: {
+            fontFamily: {
+                exo: ["Exo", "sans-serif"],
+            },
+        },
     },
     plugins: [],
 };

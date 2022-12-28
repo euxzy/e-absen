@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', Home::class);
+// Route::get('/', Home::class);
+Route::get('/', function () {
+  return view('pages.home');
+});
 
 Route::post('/admin/add', [AdminController::class, 'store']);
