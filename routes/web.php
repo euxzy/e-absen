@@ -21,7 +21,12 @@ Route::get('/', function () {
   return view('pages.home');
 });
 
-Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::prefix('/auth')
+  ->controller(AuthController::class)
+  ->name('auth.')->group(function () {
+    Route::get('/login', 'login')->name('login');
+    Route::post('/login', 'authLogin')->name('login.check');
+  });
 
 Route::prefix('/admin')
   ->controller(AdminController::class)

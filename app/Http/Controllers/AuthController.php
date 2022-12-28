@@ -10,4 +10,9 @@ class AuthController extends Controller
     {
         return view('pages.login');
     }
+
+    public function authLogin(Request $request)
+    {
+        // $user
+    }
 }

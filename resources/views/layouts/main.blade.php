@@ -8,7 +8,7 @@
   <title>@yield('title') | Absensi Siswa</title>
 
   @livewireStyles
-  @vite('resources/css/app.css')
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-[#E5E5E5]">

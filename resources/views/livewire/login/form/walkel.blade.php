@@ -1,11 +1,11 @@
-{{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
-<form action="#" method="POST">
+{{-- The Master doesn't talk, he acts. --}}
+<form action="{{ route('auth.login.check') }}" method="POST">
   @csrf
   <div class="flex w-full flex-col gap-10 px-5 font-medium">
     <label for="nis">
-      <p class="mb-3 px-1 text-lg text-[#636D77]">NIS</p>
+      <p class="mb-3 px-1 text-lg text-[#636D77]">NUPTK</p>
       <input class="w-full rounded-xl px-5 py-3 text-[#364356] outline-[#5667FD] placeholder:font-medium" type="number"
-        name="nis" id="nis" placeholder="Nama..." required>
+        name="nuptk" id="nuptk" placeholder="NUPTK..." required>
     </label>
 
     <label for="password">
