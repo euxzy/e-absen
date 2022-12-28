@@ -1,17 +1,20 @@
 {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
-<form action="#">
+<form action="#" method="POST">
   @csrf
-  <div class="flex w-full flex-col gap-10">
+  <div class="flex w-full flex-col gap-10 px-5 font-medium">
     <label for="nis">
-      <p>NIS</p>
-      <input type="number" name="nis" id="nis" required>
+      <p class="mb-3 px-1 text-lg text-[#636D77]">NIS</p>
+      <input class="w-full rounded-xl px-5 py-3 text-[#364356] outline-[#5667FD] placeholder:font-medium" type="number"
+        name="nis" id="nis" placeholder="Nama..." required>
     </label>
 
     <label for="password">
-      <p>Password</p>
-      <input type="password" name="password" id="password" required>
+      <p class="mb-3 px-1 text-lg text-[#636D77]">Password</p>
+      <input class="w-full rounded-xl px-5 py-3 text-[#364356] outline-[#5667FD] placeholder:font-medium"
+        type="password" name="password" id="password" placeholder="Password..." required>
     </label>
 
-    <button type="submit">Login</button>
+    <button type="submit"
+      class="rounded-xl bg-[#5667FD] py-4 text-xl font-semibold text-white transition-all duration-300 hover:bg-opacity-70">Login</button>
   </div>
 </form>
