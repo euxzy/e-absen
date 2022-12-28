@@ -1,9 +1,9 @@
 {{-- Close your eyes. Count to one. That is how long forever feels. --}}
 <section class="container my-8 items-center justify-between py-8 font-exo md:my-0 md:flex md:h-screen md:py-0">
-  <div class="mb-10 w-full">
+  <div class="mb-10 w-full md:w-[30rem]">
     <img class="w-full" src="{{ asset('images/hero.svg') }}" alt="Hero Image">
   </div>
-  <div class="mx-auto w-11/12 py-5 text-center">
+  <div class="mx-auto w-11/12 py-5 text-center md:w-[30rem]">
     <h1 class="mb-2 text-4xl font-semibold text-[#364356]">Sekolah!</h1>
     <p class="mb-16 text-2xl text-[#636D77]">Mohon login untuk melakukan absensi</p>
     <p><a href="{{ route('auth.login') }}"
