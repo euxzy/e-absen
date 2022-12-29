@@ -46,6 +46,22 @@ class SiswaController extends Controller
         $validated = $validator->validated();
 
         /**
+         * Cek apakah NIS dan NISN sudah ada di database
+         */
+        $nisSiswa = Siswa::query()->where('nis', $validated['nis'])->first();
+        if ($nisSiswa) {
+            return redirect()->route('siswa.add')->withErrors([
+                'message' => 'NIS Sudah Digunakan!'
+            ]);
+        }
+        $nisnSiswa = Siswa::query()->where('nisn', $validated['nisn'])->first();
+        if ($nisnSiswa) {
+            return redirect()->route('siswa.add')->withErrors([
+                'message' => 'NISN Sudah Digunakan!'
+            ]);
+        }
+
+        /**
          * Atur default photo ketika tidak
          * ada photo yang di inputkan
          */
