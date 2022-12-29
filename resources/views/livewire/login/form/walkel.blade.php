@@ -14,6 +14,8 @@
         type="password" name="password" id="password" placeholder="Password..." required>
     </label>
 
+    <input type="hidden" name="role" id="role" x-bind:value="role">
+
     <button type="submit"
       class="rounded-xl bg-[#5667FD] py-4 text-xl font-semibold text-white transition-all duration-300 hover:bg-opacity-70">Login</button>
   </div>

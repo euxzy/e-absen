@@ -1,7 +1,10 @@
 {{-- Close your eyes. Count to one. That is how long forever feels. --}}
 <section class="container my-10 py-10" x-data="{ role: 1 }">
-  <div class="mb-14 w-full">
+  <div class="mb-10 w-full">
     <h1 class="text-center text-5xl font-bold">Login!</h1>
+    @if ($errors->any())
+      <h1 class="text-center">{{ $errors->first() }}</h1>
+    @endif
     <img class="w-full" src="{{ asset('images/login.svg') }}" alt="Login Image">
 
     <template x-if="role == 1">
