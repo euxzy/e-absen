@@ -8,4 +8,8 @@
   @if (session('role') == 1)
     @livewire('siswa.absen.index')
   @endif
+
+  @if (session('role') == 2)
+    @livewire('admin.dashboard.index')
+  @endif
 @endsection
