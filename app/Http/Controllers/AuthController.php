@@ -54,6 +54,15 @@ class AuthController extends Controller
 
         // dd($user);
 
-        return redirect('/');
+        if (!session()->isStarted()) session()->start();
+        session()->put('logged', true);
+
+        return redirect()->route('home');
+    }
+
+    public function logout()
+    {
+        session()->flush();
+        return redirect()->route('auth.login');
     }
 }

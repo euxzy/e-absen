@@ -25,18 +25,19 @@ Route::get('/', function () {
 Route::prefix('/auth')
   ->controller(AuthController::class)
   ->name('auth.')->group(function () {
-    Route::get('/login', 'login')->name('login');
+    Route::get('/login', 'login')->name('login')->middleware(['noAuth']);
+    Route::get('/logout', 'logout')->name('logout');
     Route::post('/login', 'authLogin')->name('login.check');
   });
 
-Route::prefix('/admin')
+Route::prefix('/admin')->middleware(['withAuth'])
   ->controller(AdminController::class)
   ->name('admin.')->group(function () {
     Route::get('/add', 'create')->name('add');
     Route::post('/store', 'store')->name('store');
   });
 
-Route::prefix('/siswa')
+Route::prefix('/siswa')->middleware(['withAuth'])
   ->controller(SiswaController::class)
   ->name('siswa.')->group(function () {
     Route::get('/add', 'create')->name('add');
