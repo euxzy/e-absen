@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', Home::class);
 Route::get('/', function () {
   return view('pages.home');
-});
+})->name('home');
 
 Route::prefix('/auth')
   ->controller(AuthController::class)

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Absen;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -68,5 +69,26 @@ class SiswaController extends Controller
 
     public function absen(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'id_siswa' => 'required',
+            'status' => 'required',
+            'keterangan' => 'required',
+            'photo' => 'required|image|max:2048'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('home'))->withErrors([
+                'message' => 'Ukuran Gambar Terlalu Besar!'
+            ]);
+        }
+
+        $validated = $validator->validated();
+        $photo = $request->getSchemeAndHttpHost() . '/storage/' . $request->file('photo')->store('images/absen', 'public');
+        $validated['photo'] = $photo;
+
+        // dd($validated);
+
+        Absen::query()->create($validated);
+        return redirect(route('home'))->with(['absenSuccess', 'Kamu Telah Absen!']);
     }
 }

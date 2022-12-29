@@ -1,5 +1,5 @@
 {{-- Stop trying to control. --}}
-<form action="#" method="POST" class="relative z-20" enctype="multipart/form-data">
+<form action="{{ route('siswa.absen') }}" method="POST" class="relative z-20" enctype="multipart/form-data">
   @csrf
   <div
     class="flex flex-col items-center justify-center gap-5 rounded-2xl border border-[#5667FD]/50 bg-white/50 px-10 pb-10 pt-5 backdrop-blur-md">
