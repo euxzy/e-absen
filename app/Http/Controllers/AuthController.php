@@ -64,6 +64,7 @@ class AuthController extends Controller
 
         if (!session()->isStarted()) session()->start();
         session()->put('logged', true);
+        session()->put('role', $user->id_role);
 
         return redirect()->route('home');
     }

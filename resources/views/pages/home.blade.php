@@ -1,7 +1,11 @@
 @extends('layouts.main')
 @section('title', 'Home')
 @section('content')
-  {{-- @livewire('home') --}}
+  @if (!session('logged'))
+    @livewire('home')
+  @endif
 
-  @livewire('siswa.absen.index')
+  @if (session('role') == 1)
+    @livewire('siswa.absen.index')
+  @endif
 @endsection
