@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -22,15 +23,22 @@ class AuthController extends Controller
          * wali kelas yang akan login
          */
         if ($request->role == 1) {
-            // $user = ['nis' => $request->nis];
-        } else if ($request->role == 2) {
-            // $user = ['username' => $request->username];
-            $username = $request->username;
-            $user = Admin::query()->where('username', $username)->first();
+            $nis = $request->nis;
+            $user = Siswa::query()->where('nis', $nis)->first();
 
             /**
              * Cek apakah user ada di database
              */
+            if ($user == null) {
+                return redirect(route('auth.login'))
+                    ->withErrors([
+                        'message' => "User Dengan {$nis} Tidak Ditemukan!"
+                    ]);
+            }
+        } else if ($request->role == 2) {
+            $username = $request->username;
+            $user = Admin::query()->where('username', $username)->first();
+
             if ($user == null) {
                 return redirect(route('auth.login'))
                     ->withErrors([
