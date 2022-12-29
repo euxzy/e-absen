@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('siswas', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger('id_role')->default(1);
             $table->bigInteger('id_kelas');
             $table->string('nama', 50);
             $table->string('nis', 10)->unique();

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('walkels', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger('id_role')->default(3);
             $table->string('nuptk', 16)->unique();
             $table->string('nama', 50);
             $table->tinyInteger('gender');
