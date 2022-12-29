@@ -5,7 +5,7 @@
     class="flex flex-col items-center justify-center gap-8 rounded-2xl border border-[#5667FD]/50 bg-white/50 px-10 pb-10 pt-5 backdrop-blur-md">
     <h1 class="text-2xl font-bold text-[#364356]">Hadir</h1>
 
-    <input type="hidden" name="id_siswa" id="id_siswa" value="1">
+    <input type="hidden" name="id_siswa" id="id_siswa" value="{{ session('idUser') }}">
     <input type="hidden" name="status" id="status" value="1">
     <input type="hidden" name="keterangan" id="keterangan" value="hadir">
 
