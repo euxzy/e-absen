@@ -41,4 +41,5 @@ Route::prefix('/siswa')
   ->name('siswa.')->group(function () {
     Route::get('/add', 'create')->name('add');
     Route::post('/store', 'store')->name('store');
+    Route::post('/absen', 'absen')->name('absen');
   });

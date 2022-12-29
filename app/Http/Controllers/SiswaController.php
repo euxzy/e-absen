@@ -65,4 +65,8 @@ class SiswaController extends Controller
         Siswa::query()->create($validated);
         return redirect('/')->with(['addSiswaSuccess', 'Berhasil Menambah Data Siswa!']);
     }
+
+    public function absen(Request $request)
+    {
+    }
 }
