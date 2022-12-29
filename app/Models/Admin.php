@@ -10,6 +10,7 @@ class Admin extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+    protected $table = 'admins';
 
     protected static function boot()
     {
