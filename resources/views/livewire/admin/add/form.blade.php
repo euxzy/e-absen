@@ -1,7 +1,7 @@
 {{-- The whole world belongs to you. --}}
-<form action="{{ route('admin.store') }}" method="POST">
+<form action="{{ route('admin.store') }}" method="POST" class="lg:w-[400px]">
   @csrf
-  <div class="flex w-full flex-col gap-8 px-5 font-medium">
+  <div class="flex w-full flex-col gap-8 px-5 font-medium lg:gap-5">
     <label for="nama">
       <p class="mb-3 px-1 text-lg text-[#636D77]">Nama</p>
       <input class="w-full rounded-xl px-5 py-3 text-[#364356] outline-[#5667FD] placeholder:font-medium" type="text"
