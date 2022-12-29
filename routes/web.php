@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Livewire\Home;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,13 @@ Route::prefix('/auth')
 Route::prefix('/admin')
   ->controller(AdminController::class)
   ->name('admin.')->group(function () {
+    Route::get('/add', 'create')->name('add');
+    Route::post('/store', 'store')->name('store');
+  });
+
+Route::prefix('/siswa')
+  ->controller(SiswaController::class)
+  ->name('siswa.')->group(function () {
     Route::get('/add', 'create')->name('add');
     Route::post('/store', 'store')->name('store');
   });
