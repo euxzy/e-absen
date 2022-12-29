@@ -1,6 +1,7 @@
 {{-- The Master doesn't talk, he acts. --}}
-<form action="{{ route('auth.login.check') }}" method="POST">
+<form action="{{ route('auth.login.check') }}" method="POST" class="lg:w-[450px]">
   @csrf
+  <h1 class="hidden text-center text-5xl font-bold text-[#364356] lg:mb-10 lg:block">Login!</h1>
   <div class="flex w-full flex-col gap-10 px-5 font-medium">
     <label for="nis">
       <p class="mb-3 px-1 text-lg text-[#636D77]">NUPTK</p>

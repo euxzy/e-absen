@@ -32,7 +32,7 @@ class AuthController extends Controller
             if ($user == null) {
                 return redirect(route('auth.login'))
                     ->withErrors([
-                        'message' => "User Dengan {$nis} Tidak Ditemukan!"
+                        'message' => "User Dengan NIS {$nis} Tidak Ditemukan!"
                     ]);
             }
         } else if ($request->role == 2) {
