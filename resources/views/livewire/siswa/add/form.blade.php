@@ -20,10 +20,15 @@
         name="nisn" id="nisn" placeholder="NISN..." required>
     </label>
 
-    <label for="id_kelas">
+    <label for="id_kelas" x-data="{ data: {{ $kelass }} }" class="w-full">
       <p class="mb-3 px-1 text-lg text-[#636D77]">Kelas</p>
-      <input class="w-full rounded-xl px-5 py-3 text-[#364356] outline-[#5667FD] placeholder:font-medium" type="text"
-        name="id_kelas" id="id_kelas" placeholder="Kelas..." required>
+      <select name="id_kelas" id="id_kelas"
+        class="w-full rounded-xl bg-white bg-clip-padding px-5 py-3 text-[#636D77] outline-[#5667FD]" required>
+        <option selected disabled>Pilih Kelas</option>
+        <template x-for="kelas in data">
+          <option x-bind:value="kelas.id" x-text="`Kelas ${kelas.tingkat + kelas.nama}`"></option>
+        </template>
+      </select>
     </label>
 
     <div class="flex w-full flex-col items-start gap-10 md:flex-row">
@@ -36,9 +41,12 @@
 
       <label for="gender" class="w-full">
         <p class="mb-3 px-1 text-lg text-[#636D77]">Jenis Kelamin</p>
-        <input
-          class="w-full cursor-pointer rounded-xl px-5 py-3 text-[#364356] outline-[#5667FD] placeholder:font-medium"
-          type="text" name="gender" id="gender" required>
+        <select name="gender" id="gender"
+          class="w-full rounded-xl bg-white bg-clip-padding px-5 py-3 text-[#636D77] outline-[#5667FD]" required>
+          <option selected disabled>Jenis Kelamin</option>
+          <option value="1">Laki - laki</option>
+          <option value="0">Perempuan</option>
+        </select>
       </label>
 
       <label for="photo" class="w-full">
@@ -57,6 +65,6 @@
 
     <button type="submit"
       class="rounded-xl bg-[#5667FD] py-4 text-xl font-semibold text-white transition-all duration-300 hover:bg-opacity-70">Tambah
-      Admin</button>
+      Siswa</button>
   </div>
 </form>
