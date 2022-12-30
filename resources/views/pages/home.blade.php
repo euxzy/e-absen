@@ -12,4 +12,8 @@
   @if (session('role') == 2)
     @livewire('admin.dashboard.index')
   @endif
+
+  @if (session('role') == 3)
+    <h1>Hello Wali Kelas!</h1>
+  @endif
 @endsection

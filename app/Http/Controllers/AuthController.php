@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Siswa;
+use App\Models\WaliKelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -46,9 +47,16 @@ class AuthController extends Controller
                     ]);
             }
         } else if ($request->role == 3) {
-            // $user = ['nuptk' => $request->nuptk];
+            $nuptk = $request->nuptk;
+            $user = WaliKelas::query()->where('nuptk', $nuptk)->first();
+
+            if ($user == null) {
+                return redirect(route('auth.login'))
+                    ->withErrors([
+                        'message' => "User Dengan NUPTK {$nuptk} Tidak Ditemukan!"
+                    ]);
+            }
         }
-        // $user['password'] = $request->password;
 
         /**
          * Cek apakah password benar
