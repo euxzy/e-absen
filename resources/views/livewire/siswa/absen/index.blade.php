@@ -6,20 +6,38 @@
       showIzin: false
   }" x-cloak>
   <div class="mx-auto w-5/6 lg:order-2 lg:mx-0 lg:w-96">
+    @if ($errors->any())
+      <div class="mb-4 rounded-xl bg-[#FF725E]/70 py-2 lg:mb-0 lg:hidden">
+        <h1 class="text-center text-xl font-bold text-white">{{ $errors->first() }}</h1>
+      </div>
+    @endif
+
     <h1 class="mb-10 text-center text-3xl font-bold text-[#364356] lg:hidden">Absen!</h1>
     <img src="{{ asset('images/absen.svg') }}" alt="Absen Image">
   </div>
   <div class="lg:order-1">
+    @if (session('absenSuccess'))
+      <div class="mb-4 hidden rounded-xl bg-[#04AA6D]/70 py-2 lg:block">
+        <h1 class="text-center text-xl font-bold text-white">{{ session('absenSuccess') }}</h1>
+      </div>
+    @endif
+
+    @if ($errors->any())
+      <div class="mb-4 hidden rounded-xl bg-[#FF725E]/70 py-2 lg:block">
+        <h1 class="text-center text-xl font-bold text-white">{{ $errors->first() }}</h1>
+      </div>
+    @endif
+
     <h1 class="mb-10 hidden text-center text-3xl font-bold text-[#364356] lg:block">Absen!</h1>
     <ul class="mx-auto flex w-5/6 flex-col gap-3 text-center lg:mx-0 lg:w-96">
       <li><a x-on:click="showHadir = true"
-          class="inline-block w-full cursor-pointer rounded-2xl bg-[#5667FD] py-3 text-2xl font-semibold text-white transition-all duration-300 hover:bg-opacity-70">Hadir</a>
+          class="inline-block w-full cursor-pointer rounded-2xl bg-[#5667FD] py-2 text-2xl font-semibold text-white transition-all duration-300 hover:bg-opacity-70">Hadir</a>
       </li>
       <li><a x-on:click="showSakit = true"
-          class="inline-block w-full cursor-pointer rounded-2xl bg-[#5667FD] py-3 text-2xl font-semibold text-white transition-all duration-300 hover:bg-opacity-70">Sakit</a>
+          class="inline-block w-full cursor-pointer rounded-2xl bg-[#5667FD] py-2 text-2xl font-semibold text-white transition-all duration-300 hover:bg-opacity-70">Sakit</a>
       </li>
       <li><a x-on:click="showIzin = true"
-          class="inline-block w-full cursor-pointer rounded-2xl bg-[#5667FD] py-3 text-2xl font-semibold text-white transition-all duration-300 hover:bg-opacity-70">Izin</a>
+          class="inline-block w-full cursor-pointer rounded-2xl bg-[#5667FD] py-2 text-2xl font-semibold text-white transition-all duration-300 hover:bg-opacity-70">Izin</a>
       </li>
     </ul>
   </div>

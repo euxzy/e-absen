@@ -93,18 +93,31 @@ class SiswaController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect(route('home'))->withErrors([
+            return redirect()->route('home')->withErrors([
                 'message' => 'Ukuran Gambar Terlalu Besar!'
             ]);
         }
 
         $validated = $validator->validated();
+        $validated['tgl_absen'] = date('Y-m-d');
+        $validated['waktu_absen'] = date('H:i:s');
+
+        $absen = Absen::query()->where('id_siswa', $validated['id_siswa'])
+            ->where('tgl_absen', $validated['tgl_absen'])->first();
+        // dd($absen);
+
+        if ($absen) {
+            return redirect()->route('home')->withErrors([
+                'message' => 'Kamu Sudah Absen Hari Ini!'
+            ]);
+        }
+
         $photo = $request->getSchemeAndHttpHost() . '/storage/' . $request->file('photo')->store('images/absen', 'public');
         $validated['photo'] = $photo;
 
         // dd($validated);
 
         Absen::query()->create($validated);
-        return redirect(route('home'))->with(['absenSuccess', 'Kamu Telah Absen!']);
+        return redirect()->route('home')->with('absenSuccess', 'Berhasil Absen!');
     }
 }

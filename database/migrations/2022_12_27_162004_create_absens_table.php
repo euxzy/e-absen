@@ -19,6 +19,8 @@ return new class extends Migration
             $table->tinyInteger('status');
             $table->text('keterangan');
             $table->text('photo');
+            $table->date('tgl_absen');
+            $table->time('waktu_absen');
             $table->timestamps();
         });
     }

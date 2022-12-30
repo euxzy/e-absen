@@ -14,7 +14,7 @@
     </label>
 
     <label for="photo">
-      <p class="mb-3 px-1 text-lg text-[#636D77]">Photo</p>
+      <p class="mb-3 px-1 text-lg text-[#636D77]">Photo <span class="text-sm font-semibold text-red-700">*max 2MB</p>
       <input
         class="cursor-pointer rounded-lg bg-white font-medium text-[#636D77] outline-none file:mr-4 file:cursor-pointer file:border-none file:bg-[#5667FD] file:px-5 file:py-3 file:font-medium file:text-white file:transition-all file:duration-300 file:hover:bg-opacity-70"
         type="file" name="photo" id="photo" required>
