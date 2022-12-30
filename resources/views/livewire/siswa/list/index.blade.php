@@ -13,22 +13,23 @@
       </ul>
 
       <div x-data="{ data: {{ $siswas }} }" class="">
-        <template x-for="siswa of data">
+        @foreach ($siswas as $siswa)
           <ul
             class="flex items-center justify-between border-b px-5 py-3 transition-all duration-300 ease-out hover:bg-[#5667FD]/30">
             <li class="flex w-56 items-center gap-3">
               <div class="h-10 w-10 overflow-hidden rounded-xl">
-                <img class="w-full" :src="siswa.photo" :alt="siswa.nama">
+                <img class="w-full" src="{{ $siswa->photo }}" alt="{{ $siswa->nama }}" />
               </div>
-              <span x-text="siswa.nama" class="font-medium"></span>
+              <span class="font-medium">{{ $siswa->nama }}</span>
             </li>
-            <li x-text="siswa.nis" class="w-40"></li>
-            <li x-text="siswa.nisn" class="w-40"></li>
-            <li x-text="siswa.kelas.tingkat + siswa.kelas.nama" class="w-20"></li>
-            <li class="w-40"><a href="#">Detail</a></li>
+            <li class="w-40">{{ $siswa->nis }}</li>
+            <li class="w-40">{{ $siswa->nisn }}</li>
+            <li class="w-20">{{ $siswa->kelas->tingkat . $siswa->kelas->nama }}</li>
+            <li class="w-40"><a href="{{ route('dashboard.siswa.detail', $siswa->nis) }}">Detail</a></li>
           </ul>
-        </template>
+        @endforeach
       </div>
+
     </div>
   </div>
 </section>

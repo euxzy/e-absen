@@ -125,4 +125,9 @@ class SiswaController extends Controller
     {
         return view('pages.siswa.list');
     }
+
+    public function detail($nis)
+    {
+        return view('pages.siswa.detail', ['nis' => $nis]);
+    }
 }
