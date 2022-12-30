@@ -128,6 +128,11 @@ class SiswaController extends Controller
 
     public function detail($nis)
     {
+        if (!Siswa::query()->where('nis', $nis)->first()) {
+            return redirect()->route('dashboard.siswa.list')
+                ->withErrors(['message' => 'Data Siswa Tidak Ditemukan!']);
+        }
+
         return view('pages.siswa.detail', ['nis' => $nis]);
     }
 
