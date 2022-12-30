@@ -1,5 +1,6 @@
 {{-- Close your eyes. Count to one. That is how long forever feels. --}}
-<section class="container">
+<section>
   @livewire('partials.sidebar')
-  <h1>Hello!</h1>
+
+  {{-- @livewire('admin.add.index') --}}
 </section>

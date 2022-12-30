@@ -1,5 +1,5 @@
 {{-- The whole world belongs to you. --}}
-<form action="{{ route('admin.store') }}" method="POST" class="lg:w-[400px]">
+<form action="{{ route('dashboard.admin.store') }}" method="POST" class="lg:w-[400px]">
   @csrf
   <div class="flex w-full flex-col gap-8 px-5 font-medium lg:gap-5">
     <label for="nama">

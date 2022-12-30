@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
     public function create()
     {
-        return view('pages.admin');
+        return view('pages.admin.add');
     }
 
     public function store(Request $request)
@@ -23,7 +23,7 @@ class AdminController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('admin.add')->withErrors([
+            return redirect()->route('dashboard.admin.add')->withErrors([
                 'message' => 'Mohon Isi Semua Data Dengan Benar!'
             ]);
         }
@@ -35,18 +35,18 @@ class AdminController extends Controller
          */
         $usernameAdmin = Admin::query()->where('username', $validated['username'])->first();
         if ($usernameAdmin) {
-            return redirect()->route('admin.add')->withErrors([
+            return redirect()->route('dashboard.admin.add')->withErrors([
                 'message' => 'Username Sudah Digunakan!'
             ]);
         }
         // dd($usernameAdmin);
         $emailAdmin = Admin::query()->where('email', $validated['email'])->first();
         if ($emailAdmin) {
-            return redirect()->route('admin.add')->withErrors([
+            return redirect()->route('dashboard.admin.add')->withErrors([
                 'message' => 'Email Sudah Digunakan!'
             ]);
         }
-        dd($emailAdmin);
+        // dd($emailAdmin);
 
         // dd($validated);
 

@@ -30,11 +30,13 @@ Route::prefix('/auth')
     Route::post('/login', 'authLogin')->name('login.check');
   });
 
-Route::prefix('/admin')->middleware(['withAuth'])
-  ->controller(AdminController::class)
-  ->name('admin.')->group(function () {
-    Route::get('/add', 'create')->name('add');
-    Route::post('/store', 'store')->name('store');
+Route::prefix('/dashboard')->middleware(['withAuth'])
+  ->name('dashboard.')->group(function () {
+    Route::prefix('admin')->controller(AdminController::class)
+      ->name('admin.')->group(function () {
+        Route::get('/add', 'create')->name('add');
+        Route::post('/store', 'store')->name('store');
+      });
   });
 
 Route::prefix('/siswa')->middleware(['withAuth'])

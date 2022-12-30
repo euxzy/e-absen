@@ -1,5 +1,5 @@
 {{-- In work, do what you enjoy. --}}
-<section class="container my-10 py-10 lg:my-0 lg:mt-10 lg:flex lg:items-end lg:justify-center lg:gap-16">
+<section class="my-10 w-3/4 py-10 lg:my-0 lg:mt-10 lg:flex lg:items-end lg:justify-center lg:gap-16">
   <div class="mx-auto mb-14 w-5/6 lg:mx-0 lg:mb-0 lg:w-[500px]">
     @if ($errors->any())
       <div class="mb-5 rounded-xl bg-[#FF725E]/70 py-2">
