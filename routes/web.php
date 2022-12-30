@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\WaliKelasController;
 use App\Http\Livewire\Home;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,12 @@ Route::prefix('/dashboard')->middleware(['withAuth'])
         Route::get('/add', 'create')->name('add');
         Route::post('/store', 'store')->name('store');
         Route::get('/list', 'index')->name('list');
+      });
+
+    Route::prefix('/walkel')->controller(WaliKelasController::class)
+      ->name('walkel.')->group(function () {
+        Route::get('/add', 'create')->name('add');
+        Route::post('/store', 'store')->name('store');
       });
   });
 
