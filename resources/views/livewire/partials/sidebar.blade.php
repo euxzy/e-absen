@@ -10,7 +10,8 @@
           class="inline-block w-full rounded-xl px-4 py-3 hover:bg-[#5667FD]/30">Tambah Admin</a></li>
       <li><a href="#" class="inline-block w-full rounded-xl px-4 py-3 hover:bg-[#5667FD]/30">Tambah Wali Kelas</a>
       </li>
-      <li><a href="#" class="inline-block w-full rounded-xl px-4 py-3 hover:bg-[#5667FD]/30">Tambah Siswa</a></li>
+      <li><a href="{{ route('dashboard.siswa.add') }}"
+          class="inline-block w-full rounded-xl px-4 py-3 hover:bg-[#5667FD]/30">Tambah Siswa</a></li>
       <li><a href="#" class="inline-block w-full rounded-xl px-4 py-3 hover:bg-[#5667FD]/30">Daftar Siswa</a></li>
     </ul>
   </div>

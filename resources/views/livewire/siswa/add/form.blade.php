@@ -1,5 +1,5 @@
 {{-- Do your work, then step back. --}}
-<form action="{{ route('siswa.store') }}" method="POST" enctype="multipart/form-data" class="lg:w-[500px]">
+<form action="{{ route('dashboard.siswa.store') }}" method="POST" enctype="multipart/form-data" class="lg:w-[500px]">
   @csrf
   <div class="flex w-full flex-col gap-8 px-5 font-medium lg:gap-3">
     <div class="flex flex-col justify-between gap-3 lg:flex-row">

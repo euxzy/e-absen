@@ -37,12 +37,18 @@ Route::prefix('/dashboard')->middleware(['withAuth'])
         Route::get('/add', 'create')->name('add');
         Route::post('/store', 'store')->name('store');
       });
+
+    Route::prefix('/siswa')->controller(SiswaController::class)
+      ->name('siswa.')->group(function () {
+        Route::get('/add', 'create')->name('add');
+        Route::post('/store', 'store')->name('store');
+      });
   });
 
 Route::prefix('/siswa')->middleware(['withAuth'])
   ->controller(SiswaController::class)
   ->name('siswa.')->group(function () {
-    Route::get('/add', 'create')->name('add');
-    Route::post('/store', 'store')->name('store');
+    // Route::get('/add', 'create')->name('add');
+    // Route::post('/store', 'store')->name('store');
     Route::post('/absen', 'absen')->name('absen');
   });

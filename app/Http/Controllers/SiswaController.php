@@ -11,7 +11,7 @@ class SiswaController extends Controller
 {
     public function create()
     {
-        return view('pages.siswa');
+        return view('pages.siswa.add');
     }
 
     public function store(Request $request)
@@ -35,7 +35,7 @@ class SiswaController extends Controller
          * route tambah siswa dengan pesan error
          */
         if ($validator->fails()) {
-            return redirect(route('siswa.add'))->withErrors([
+            return redirect(route('dashboard.siswa.add'))->withErrors([
                 'message' => 'Mohon Isi Semua Data Dengan Benar!'
             ]);
         }
@@ -50,13 +50,13 @@ class SiswaController extends Controller
          */
         $nisSiswa = Siswa::query()->where('nis', $validated['nis'])->first();
         if ($nisSiswa) {
-            return redirect()->route('siswa.add')->withErrors([
+            return redirect()->route('dashboard.siswa.add')->withErrors([
                 'message' => 'NIS Sudah Digunakan!'
             ]);
         }
         $nisnSiswa = Siswa::query()->where('nisn', $validated['nisn'])->first();
         if ($nisnSiswa) {
-            return redirect()->route('siswa.add')->withErrors([
+            return redirect()->route('dashboard.siswa.add')->withErrors([
                 'message' => 'NISN Sudah Digunakan!'
             ]);
         }
@@ -80,7 +80,7 @@ class SiswaController extends Controller
         // dd($validated);
 
         Siswa::query()->create($validated);
-        return redirect('/')->with(['addSiswaSuccess', 'Berhasil Menambah Data Siswa!']);
+        return redirect()->route('home')->with(['addSiswaSuccess', 'Berhasil Menambah Data Siswa!']);
     }
 
     public function absen(Request $request)

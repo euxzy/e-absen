@@ -1,5 +1,5 @@
 {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
-<section class="container my-10 py-10 lg:my-0 lg:mt-14 lg:flex lg:items-center lg:justify-center lg:gap-10 lg:py-0">
+<section class="my-10 py-10 lg:my-0 lg:mt-16 lg:flex lg:items-center lg:justify-center lg:gap-8 lg:py-0">
   <div class="mb-14 w-full lg:mb-0 lg:w-[500px]">
     @if ($errors->any())
       <div class="mb-4 rounded-xl bg-[#FF725E]/70 py-2">
