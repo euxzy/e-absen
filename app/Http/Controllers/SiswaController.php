@@ -20,7 +20,7 @@ class SiswaController extends Controller
          * Melakukan validasi pada request yang di input
          */
         $validator = Validator::make($request->all(), [
-            'nama' => 'required|min:6|max:50',
+            'nama' => 'required|max:50',
             'nis' => 'required|min:10|max:10',
             'nisn' => 'required|min:10|max:10',
             'id_kelas' => 'required|numeric',
@@ -119,5 +119,10 @@ class SiswaController extends Controller
 
         Absen::query()->create($validated);
         return redirect()->route('home')->with('absenSuccess', 'Berhasil Absen!');
+    }
+
+    public function index()
+    {
+        return view('pages.siswa.list');
     }
 }

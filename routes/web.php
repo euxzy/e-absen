@@ -42,6 +42,7 @@ Route::prefix('/dashboard')->middleware(['withAuth'])
       ->name('siswa.')->group(function () {
         Route::get('/add', 'create')->name('add');
         Route::post('/store', 'store')->name('store');
+        Route::get('/list', 'index')->name('list');
       });
   });
 
