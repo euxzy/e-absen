@@ -14,6 +14,6 @@
   @endif
 
   @if (session('role') == 3)
-    <h1>Hello Wali Kelas!</h1>
+    @livewire('walkel.dashboard.index')
   @endif
 @endsection
