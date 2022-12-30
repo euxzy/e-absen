@@ -31,7 +31,7 @@ Route::prefix('/auth')
     Route::post('/login', 'authLogin')->name('login.check');
   });
 
-Route::prefix('/dashboard')->middleware(['withAuth'])
+Route::prefix('/dashboard')->middleware(['withAuth', 'isAdmin'])
   ->name('dashboard.')->group(function () {
     Route::prefix('admin')->controller(AdminController::class)
       ->name('admin.')->group(function () {

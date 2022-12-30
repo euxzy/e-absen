@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class WithAuth
+class IsAdmin
 {
     /**
      * Handle an incoming request.
@@ -17,9 +17,9 @@ class WithAuth
     public function handle(Request $request, Closure $next)
     {
         if (!session()->isStarted()) session()->start();
-        if (!session()->get('logged', false)) {
-            return redirect()->route('auth.login')
-                ->withErrors(['message' => 'Mohon Untuk Login Terlebih Dahulu!']);
+        if (session()->get('role') != 2) {
+            return redirect()->route('home')
+                ->withErrors(['message' => 'Izin Admin Diperlukan!']);
         }
 
         return $next($request);

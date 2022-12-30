@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\NoAuth;
 use App\Http\Middleware\WithAuth;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -67,5 +68,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'noAuth' => NoAuth::class,
         'withAuth' => WithAuth::class,
+        'isAdmin' => IsAdmin::class,
     ];
 }
