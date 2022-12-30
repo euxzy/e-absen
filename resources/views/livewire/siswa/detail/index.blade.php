@@ -23,7 +23,8 @@
   </div>
 
   <div class="flex w-full justify-between">
-    <form action="" method="POST" class="w-80 rounded-xl bg-white p-6">
+    <form action="{{ route('dashboard.siswa.update', $siswa->nis) }}" method="POST"
+      class="w-80 rounded-xl bg-white p-6">
       @csrf
       <h1 class="mb-5 text-xl font-bold">Data Siswa</h1>
       <div class="flex w-full flex-col gap-3 text-lg">
@@ -58,7 +59,9 @@
           <p class="text-xs opacity-80">Kelas</p>
           <select name="id_kelas" id="id_kelas" class="peer relative w-full bg-transparent py-1 outline-none"
             x-bind:disabled="isDisabled">
-            <option selected>Kelas {{ $siswa->kelas->tingkat . $siswa->kelas->nama }}</option>
+            <option value="{{ $siswa->kelas->id }}" selected disabled>
+              Kelas {{ $siswa->kelas->tingkat . $siswa->kelas->nama }}
+            </option>
             @foreach ($kelass as $kelas)
               <option value="{{ $kelas->id }}">Kelas {{ $kelas->tingkat . $kelas->nama }}</option>
             @endforeach

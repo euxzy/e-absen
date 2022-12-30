@@ -45,6 +45,7 @@ Route::prefix('/dashboard')->middleware(['withAuth', 'isAdmin'])
         Route::post('/store', 'store')->name('store');
         Route::get('/list', 'index')->name('list');
         Route::get('/detail/{nis}', 'detail')->name('detail');
+        Route::post('/update/{nis}', 'update')->name('update');
       });
 
     Route::prefix('/walkel')->controller(WaliKelasController::class)

@@ -130,4 +130,36 @@ class SiswaController extends Controller
     {
         return view('pages.siswa.detail', ['nis' => $nis]);
     }
+
+    public function update(Request $request, $nis)
+    {
+        $siswa = Siswa::query()->where('nis', $nis)->first();
+        if (!$siswa) {
+            return redirect()->route('dashboard.siswa.list')
+                ->withErrors(['message' => 'Data Siswa Tidak Ditemukan!']);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'nama' => 'max:50',
+            'nis' => 'min:10|max:10',
+            'nisn' => 'min:10|max:10',
+            'id_kelas' => 'numeric',
+            'tgl_lahir' => 'date',
+            'gender' => 'numeric'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('dashboard.siswa.detail', $siswa->nis))
+                ->withErrors([
+                    'message' => 'Mohon Isi Semua Data Dengan Benar!'
+                ]);
+        }
+
+        $validated = $validator->validated();
+        // dd($validated);
+
+        $siswa->update($validated);
+        return redirect()->route('dashboard.siswa.detail', $validated['nis'])
+            ->with('updateSuccess', 'Update Data Siswa Berhasil!');
+    }
 }
