@@ -10,10 +10,13 @@
           <p class="text-2xl font-semibold">{{ $siswa->nama }}</p>
           <p class="text-sm">Kelas {{ $siswa->kelas->tingkat . $siswa->kelas->nama }}</p>
         </div>
-        <div>
+        <div class="flex gap-3">
           <a x-on:click="isDisabled = !isDisabled" x-text="'Edit'" class="cursor-pointer"></a>
-          |
-          <a href="#">Hapus</a>
+          <span> | </span>
+          <form method="POST" action="{{ route('dashboard.siswa.delete', $siswa->nis) }}">
+            @csrf
+            <button type="submit">Hapus</button>
+          </form>
         </div>
       </div>
     </div>

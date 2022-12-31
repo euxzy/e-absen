@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Absen;
 use App\Models\Siswa;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class SiswaController extends Controller
@@ -166,5 +168,33 @@ class SiswaController extends Controller
         $siswa->update($validated);
         return redirect()->route('dashboard.siswa.detail', $validated['nis'])
             ->with('updateSuccess', 'Update Data Siswa Berhasil!');
+    }
+
+    public function destroy(Request $request, $nis)
+    {
+        $siswa = Siswa::query()->where('nis', $nis)->first();
+        // dd($siswa);
+
+        if (!$siswa) {
+            return redirect()->route('dashboard.siswa.list')
+                ->withErrors(['message' => 'Data Siswa Tidak Ditemukan!']);
+        }
+
+        /**
+         * Mendapatkan lokasi photo siswa
+         */
+        $oldPhoto = Str::of($siswa->photo)->remove($request->getSchemeAndHttpHost() . '/storage');
+        // dd($oldPhoto);
+        /**
+         * Cek apakah photo ada di storage. Jika ada,
+         * maka photo akan dihapus
+         */
+        if (Storage::disk('public')->exists($oldPhoto)) {
+            Storage::disk('public')->delete($oldPhoto);
+        }
+
+        $siswa->delete();
+        return redirect()->route('dashboard.siswa.list')
+            ->with('message', 'Data Siswa Telah Dihapus!');
     }
 }
