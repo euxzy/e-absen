@@ -54,6 +54,7 @@ Route::prefix('/dashboard')->middleware(['withAuth', 'isAdmin'])
         Route::get('/add', 'create')->name('add');
         Route::post('/store', 'store')->name('store');
         Route::get('/list', 'index')->name('list');
+        Route::get('/detail/{nuptk}', 'detail')->name('detail');
       });
   });
 

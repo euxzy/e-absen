@@ -54,4 +54,13 @@ class WaliKelasController extends Controller
     {
         return view('pages.walkel.list');
     }
+
+    public function detail($nuptk)
+    {
+        if (!WaliKelas::query()->where('nuptk', $nuptk)->first()) {
+            dd($nuptk);
+        }
+
+        return view('pages.walkel.detail', ['nuptk' => $nuptk]);
+    }
 }
