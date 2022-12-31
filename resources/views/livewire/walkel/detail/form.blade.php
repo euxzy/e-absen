@@ -1,5 +1,5 @@
 {{-- Do your work, then step back. --}}
-<form action="" method="POST" class="w-80 rounded-xl bg-white p-6">
+<form action="{{ route('dashboard.walkel.update', $walkel->nuptk) }}" method="POST" class="w-80 rounded-xl bg-white p-6">
   @csrf
   <h1 class="mb-5 text-xl font-bold">Data Wali Kelas</h1>
   <div class="flex w-full flex-col gap-3 text-lg">

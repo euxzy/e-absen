@@ -25,9 +25,10 @@ class WaliKelasController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect(route('dashboard.walkel.add'))->withErrors([
-                'message' => 'Mohon Isi Semua Data Dengan Benar!'
-            ]);
+            return redirect()->route('dashboard.walkel.add')
+                ->withErrors([
+                    'message' => 'Mohon Isi Semua Data Dengan Benar!'
+                ]);
         }
 
         $validated = $validator->validated();
@@ -58,9 +59,39 @@ class WaliKelasController extends Controller
     public function detail($nuptk)
     {
         if (!WaliKelas::query()->where('nuptk', $nuptk)->first()) {
-            dd($nuptk);
+            return redirect()->route('dashboard.walkel.list')
+                ->withErrors(['message' => 'Data Wali Kelas Tidak Ditemukan!']);
         }
 
         return view('pages.walkel.detail', ['nuptk' => $nuptk]);
+    }
+
+    public function update(Request $request, $nuptk)
+    {
+        $walkel = WaliKelas::query()->where('nuptk', $nuptk)->first();
+        if (!$walkel) {
+            return redirect()->route('dashboard.walkel.list')
+                ->withErrors(['message' => 'Data Wali Kelas Tidak Ditemukan!']);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'nama' => 'max:50',
+            'nuptk' => 'min:16|max:16',
+            'tgl_lahir' => 'date',
+            'gender' => 'numeric'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('dashboard.walkel.detail', $walkel->nuptk)
+                ->withErrors([
+                    'message' => 'Mohon Isi Semua Data Dengan Benar!'
+                ]);
+        }
+
+        $validated = $validator->validated();
+
+        $walkel->update($validated);
+        return redirect()->route('dashboard.walkel.detail', $validated['nuptk'])
+            ->with('updateSuccess', 'Update Data Wali Kelas Berhasil!');
     }
 }
