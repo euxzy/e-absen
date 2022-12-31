@@ -47,7 +47,7 @@
     </label>
 
     <label for="gender" class="relative pb-3">
-      <p class="text-xs opacity-80">Kelas</p>
+      <p class="text-xs opacity-80">Jenis Kelamin</p>
       <template x-if="gender == 0">
         <select name="gender" id="gender" class="peer relative w-full bg-transparent py-1 outline-none"
           x-bind:disabled="isDisabled">
