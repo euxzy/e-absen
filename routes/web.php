@@ -56,6 +56,7 @@ Route::prefix('/dashboard')->middleware(['withAuth', 'isAdmin'])
         Route::get('/list', 'index')->name('list');
         Route::get('/detail/{nuptk}', 'detail')->name('detail');
         Route::post('/update/{nuptk}', 'update')->name('update');
+        Route::post('/delete/{nuptk}', 'destroy')->name('delete');
       });
   });
 

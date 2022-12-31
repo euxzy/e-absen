@@ -13,10 +13,10 @@
         <div class="flex gap-3">
           <a x-on:click="isDisabled = !isDisabled" x-text="'Edit'" class="cursor-pointer"></a>
           <span> | </span>
-          {{-- <form method="POST" action="{{ route('dashboard.siswa.delete', $siswa->nis) }}">
+          <form method="POST" action="{{ route('dashboard.walkel.delete', $walkel->nuptk) }}">
             @csrf
             <button type="submit">Hapus</button>
-          </form> --}}
+          </form>
         </div>
       </div>
     </div>

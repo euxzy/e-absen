@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\WaliKelas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class WaliKelasController extends Controller
@@ -93,5 +95,23 @@ class WaliKelasController extends Controller
         $walkel->update($validated);
         return redirect()->route('dashboard.walkel.detail', $validated['nuptk'])
             ->with('updateSuccess', 'Update Data Wali Kelas Berhasil!');
+    }
+
+    public function destroy(Request $request, $nuptk)
+    {
+        $walkel = WaliKelas::query()->where('nuptk', $nuptk)->first();
+        if (!$walkel) {
+            return redirect()->route('dashboard.walkel.list')
+                ->withErrors(['message' => 'Data Wali Kelas Tidak Ditemukan!']);
+        }
+
+        $oldPhoto = Str::of($walkel->photo)->remove($request->getSchemeAndHttpHost() . '/storage');
+        if (Storage::disk('public')->exists($oldPhoto)) {
+            Storage::disk('public')->delete($oldPhoto);
+        }
+
+        $walkel->delete();
+        return redirect()->route('dashboard.walkel.list')
+            ->with('message', 'Data Wali Kelas Telah Dihapus!');
     }
 }
