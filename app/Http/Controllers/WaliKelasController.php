@@ -49,4 +49,9 @@ class WaliKelasController extends Controller
         WaliKelas::query()->create($validated);
         return redirect()->route('home')->with('addWalkelSuccess', 'Berhasil Menambah Data Wali Kelas!');
     }
+
+    public function index()
+    {
+        return view('pages.walkel.list');
+    }
 }

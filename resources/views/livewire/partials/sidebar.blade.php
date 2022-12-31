@@ -19,12 +19,16 @@
               class="inline-block w-full rounded-xl px-4 py-3 hover:bg-[#5667FD]/30">Tambah Wali Kelas</a>
           </li>
           <li>
+            <a href="{{ route('dashboard.walkel.list') }}"
+              class="inline-block w-full rounded-xl px-4 py-3 hover:bg-[#5667FD]/30">List Wali Kelas</a>
+          </li>
+          <li>
             <a href="{{ route('dashboard.siswa.add') }}"
               class="inline-block w-full rounded-xl px-4 py-3 hover:bg-[#5667FD]/30">Tambah Siswa</a>
           </li>
           <li>
             <a href="{{ route('dashboard.siswa.list') }}"
-              class="inline-block w-full rounded-xl px-4 py-3 hover:bg-[#5667FD]/30">Daftar Siswa</a>
+              class="inline-block w-full rounded-xl px-4 py-3 hover:bg-[#5667FD]/30">List Siswa</a>
           </li>
         </div>
       </template>
@@ -35,6 +39,9 @@
               1A</a></li>
         </div>
       </template>
+
+      <li><a href="{{ route('auth.logout') }}"
+          class="inline-block w-full rounded-xl px-4 py-3 hover:bg-[#5667FD]/30">Logout</a></li>
     </ul>
   </div>
 </div>
