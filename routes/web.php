@@ -53,10 +53,10 @@ Route::prefix('/dashboard')->middleware(['withAuth'])
 
     Route::prefix('/walkel')->controller(WaliKelasController::class)
       ->name('walkel.')->group(function () {
-        Route::get('/add', 'create')->name('add');
-        Route::post('/store', 'store')->name('store');
-        Route::get('/list', 'index')->name('list');
-        Route::get('/detail/{nuptk}', 'detail')->name('detail');
+        Route::get('/add', 'create')->name('add')->middleware(['isAdmin']);
+        Route::post('/store', 'store')->name('store')->middleware(['isAdmin']);
+        Route::get('/list', 'index')->name('list')->middleware(['isAdmin']);
+        Route::get('/detail/{nuptk}', 'detail')->name('detail')->middleware(['isAdmin']);
         Route::post('/update/{nuptk}', 'update')->name('update');
         Route::post('/delete/{nuptk}', 'destroy')->name('delete');
       });
