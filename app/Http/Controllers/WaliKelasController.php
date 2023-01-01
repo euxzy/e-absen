@@ -85,7 +85,14 @@ class WaliKelasController extends Controller
             'password' => 'required|min:6'
         ]);
 
+        $sessionRole = session('role');
+
         if ($validator->fails()) {
+            if ($sessionRole == 3) {
+                return redirect()->route('home')
+                    ->withErrors(['message' => 'Mohon Isi Semua Data Dengan Benar!']);
+            }
+
             return redirect()->route('dashboard.walkel.detail', $walkel->nuptk)
                 ->withErrors([
                     'message' => 'Mohon Isi Semua Data Dengan Benar!'
@@ -93,8 +100,6 @@ class WaliKelasController extends Controller
         }
 
         $validated = $validator->validated();
-
-        $sessionRole = session('role');
 
         $nuptkWalkel = WaliKelas::query()->where('nuptk', $validated['nuptk'])->first();
         if ($nuptkWalkel && $nuptkWalkel->nuptk != $walkel->nuptk) {

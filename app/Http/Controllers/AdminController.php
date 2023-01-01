@@ -52,7 +52,7 @@ class AdminController extends Controller
 
         Admin::query()->create($validated);
         return redirect()->route('home')
-            ->with('message', 'Berhasil Menambah Data Admin!');
+            ->with('success', 'Berhasil Menambah Data Admin!');
     }
 
     public function update(Request $request, $id)

@@ -1,5 +1,9 @@
 {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
-<div class="my-8 w-[79%] rounded-xl pb-40 text-[#364356]" x-data="{ isDisabled: true, gender: {{ $walkel->gender }} }">
+<div class="my-8 w-[79%] rounded-xl pb-40 text-[#364356]" x-data="{
+    isDisabled: true,
+    gender: {{ $walkel->gender }},
+    alertShow: true
+}">
   <div class="mb-6 flex w-full items-center justify-between rounded-xl bg-white p-4">
     <div class="flex items-end gap-4">
       <div class="h-32 w-32 overflow-hidden rounded-xl"><img class="w-full" src="{{ $walkel->photo }}"

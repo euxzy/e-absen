@@ -27,7 +27,7 @@
     </label>
 
     <button type="submit"
-      class="rounded-xl bg-[#5667FD] py-4 text-xl font-semibold text-white transition-all duration-300 hover:bg-opacity-70">Tambah
+      class="rounded-xl bg-[#5667FD] py-2 text-xl font-semibold text-white transition-all duration-300 hover:bg-opacity-70">Tambah
       Admin</button>
   </div>
 </form>
