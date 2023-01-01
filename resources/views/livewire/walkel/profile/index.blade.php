@@ -28,6 +28,6 @@
   <div class="flex w-full justify-between">
     @livewire('walkel.detail.form', ['nuptk' => $walkel->nuptk])
 
-    {{-- @livewire('kelas.index') --}}
+    @livewire('kelas.list.per-walkel', ['walkel' => $walkel])
   </div>
 </div>

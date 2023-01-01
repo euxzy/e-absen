@@ -33,13 +33,6 @@
         </div>
       </template>
 
-      <template x-if="role == 3">
-        <div class="flex flex-col gap-1">
-          <li><a href="" class="inline-block w-full rounded-xl px-4 py-3 hover:bg-[#5667FD]/30">Siswa Kelas
-              1A</a></li>
-        </div>
-      </template>
-
       <li><a href="{{ route('auth.logout') }}"
           class="inline-block w-full rounded-xl px-4 py-3 hover:bg-[#5667FD]/30">Logout</a></li>
     </ul>
