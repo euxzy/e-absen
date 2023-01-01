@@ -14,6 +14,6 @@
   @endif
 
   @if (session('role') == 3)
-    @livewire('walkel.dashboard.index')
+    @livewire('walkel.dashboard.home')
   @endif
 @endsection
