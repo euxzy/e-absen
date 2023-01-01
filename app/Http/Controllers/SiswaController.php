@@ -82,7 +82,7 @@ class SiswaController extends Controller
         // dd($validated);
 
         Siswa::query()->create($validated);
-        return redirect()->route('home')->with(['addSiswaSuccess', 'Berhasil Menambah Data Siswa!']);
+        return redirect()->route('home')->with('success', 'Berhasil Menambah Data Siswa!');
     }
 
     public function absen(Request $request)
@@ -120,7 +120,7 @@ class SiswaController extends Controller
         // dd($validated);
 
         Absen::query()->create($validated);
-        return redirect()->route('home')->with('absenSuccess', 'Berhasil Absen!');
+        return redirect()->route('home')->with('success', 'Berhasil Absen!');
     }
 
     public function index()
@@ -167,7 +167,7 @@ class SiswaController extends Controller
 
         $siswa->update($validated);
         return redirect()->route('dashboard.siswa.detail', $validated['nis'])
-            ->with('updateSuccess', 'Update Data Siswa Berhasil!');
+            ->with('success', 'Update Data Siswa Berhasil!');
     }
 
     public function destroy(Request $request, $nis)
@@ -195,6 +195,6 @@ class SiswaController extends Controller
 
         $siswa->delete();
         return redirect()->route('dashboard.siswa.list')
-            ->with('message', 'Data Siswa Telah Dihapus!');
+            ->with('success', 'Data Siswa Telah Dihapus!');
     }
 }
