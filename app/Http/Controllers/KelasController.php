@@ -38,4 +38,9 @@ class KelasController extends Controller
         return redirect()->route('home')
             ->with('success', 'Data Kelas Telah Ditambah');
     }
+
+    public function detail($id)
+    {
+        return view('pages.kelas.detail', ['id' => $id]);
+    }
 }
