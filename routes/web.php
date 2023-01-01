@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\WaliKelasController;
 use App\Http\Livewire\Home;
@@ -58,6 +59,11 @@ Route::prefix('/dashboard')->middleware(['withAuth', 'isAdmin'])
         Route::get('/detail/{nuptk}', 'detail')->name('detail');
         Route::post('/update/{nuptk}', 'update')->name('update');
         Route::post('/delete/{nuptk}', 'destroy')->name('delete');
+      });
+
+    Route::prefix('/kelas')->controller(KelasController::class)
+      ->name('kelas.')->group(function () {
+        Route::post('/store', 'store')->name('store');
       });
   });
 

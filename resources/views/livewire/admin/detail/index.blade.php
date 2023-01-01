@@ -28,5 +28,6 @@
   <div class="flex w-full justify-between">
     @livewire('admin.detail.form', ['idAdmin' => $admin->id])
 
+    @livewire('kelas.index')
   </div>
 </div>
