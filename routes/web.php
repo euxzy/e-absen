@@ -65,6 +65,7 @@ Route::prefix('/dashboard')->middleware(['withAuth'])
       ->name('kelas.')->group(function () {
         Route::post('/store', 'store')->name('store')->middleware(['isAdmin']);
         Route::get('/detail/{id}', 'detail')->name('detail');
+        Route::post('/update/{id}', 'update')->name('update')->middleware(['isAdmin']);
       });
   });
 
