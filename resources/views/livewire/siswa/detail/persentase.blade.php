@@ -14,5 +14,9 @@
       <p>Izin</p>
       <p class="text-3xl font-bold">{{ $siswa->absenIzin }} %</p>
     </div>
+    <div class="flex h-32 w-56 flex-col items-center justify-center gap-1 rounded-2xl bg-[#5667FD]/30">
+      <p>Tanpa Keterangan</p>
+      <p class="text-3xl font-bold">{{ $siswa->tnpKeterangan }} %</p>
+    </div>
   </div>
 </div>

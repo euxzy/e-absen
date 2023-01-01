@@ -24,17 +24,12 @@ class Persentase extends Component
         $izin = Absen::query()->where('status', 3)->get()
             ->filter(fn ($a) => $a->id_siswa == $siswa->id)->count();
 
-        $absen = Absen::query()->get()->filter(fn ($a) => $a->id_siswa == $siswa->id)->count();
+        // $absen = Absen::query()->get()->filter(fn ($a) => $a->id_siswa == $siswa->id)->count();
 
-        $siswa['absenHadir'] = 0;
-        $siswa['absenSakit'] = 0;
-        $siswa['absenIzin'] = 0;
-
-        if ($absen > 0) {
-            $siswa['absenHadir'] = ($hadir / $absen) * 100;
-            $siswa['absenSakit'] = ($sakit / $absen) * 100;
-            $siswa['absenIzin'] = ($izin / $absen) * 100;
-        }
+        $siswa['absenHadir'] = floor(($hadir / 30) * 100);
+        $siswa['absenSakit'] = floor(($sakit / 30) * 100);
+        $siswa['absenIzin'] = floor(($izin / 30) * 100);
+        $siswa['tnpKeterangan'] = floor(((30 - $hadir - $sakit - $izin) / 30) * 100);
 
         $data = [
             'siswa' => $siswa,
