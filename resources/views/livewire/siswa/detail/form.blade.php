@@ -1,5 +1,5 @@
 {{-- The best athlete wants his opponent at his best. --}}
-<form action="{{ route('dashboard.siswa.update', $siswa->nis) }}" method="POST"
+<form action="{{ route('dashboard.siswa.update', $siswa->nis) }}" enctype="multipart/form-data" method="POST"
   class="h-max w-80 rounded-xl bg-white p-6">
   @csrf
   <h1 class="mb-5 text-xl font-bold">Data Siswa</h1>
@@ -72,6 +72,24 @@
       <p class="text-xs opacity-80">Tanggal Lahir</p>
       <input class="peer relative w-full py-1 outline-none" type="date" name="tgl_lahir" id="tgl_lahir"
         value="{{ $siswa->tgl_lahir }}" x-bind:disabled="isDisabled">
+      <div
+        class="absolute inset-x-0 bottom-0 mx-auto block h-0.5 w-0 bg-[#364356]/50 transition-all duration-300 peer-hover:w-full peer-focus:w-full peer-active:w-full">
+      </div>
+    </label>
+
+    <label for="photo" class="relative pb-3" x-show="!isDisabled" x-transition.duration.700ms>
+      <p class="text-xs opacity-80">Photo</p>
+      <input type="file" name="photo" id="photo"
+        class="peer relative w-full cursor-pointer rounded-lg bg-white text-base font-medium text-[#636D77] file:mr-4 file:cursor-pointer file:border-none file:bg-[#5667FD] file:px-3 file:py-2 file:font-medium file:text-white file:transition-all file:duration-300 file:hover:bg-opacity-70">
+      <div
+        class="absolute inset-x-0 bottom-0 mx-auto block h-0.5 w-0 bg-[#364356]/50 transition-all duration-300 peer-hover:w-full peer-focus:w-full peer-active:w-full">
+      </div>
+    </label>
+
+    <label for="password" class="relative pb-3" x-show="!isDisabled" x-transition.duration.700ms>
+      <p class="text-xs opacity-80">Password</p>
+      <input class="peer relative w-full py-1 outline-none" type="password" name="password" id="password"
+        x-bind:disabled="isDisabled" required>
       <div
         class="absolute inset-x-0 bottom-0 mx-auto block h-0.5 w-0 bg-[#364356]/50 transition-all duration-300 peer-hover:w-full peer-focus:w-full peer-active:w-full">
       </div>

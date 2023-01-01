@@ -102,7 +102,7 @@ class WaliKelasController extends Controller
         $validated = $validator->validated();
 
         $nuptkWalkel = WaliKelas::query()->where('nuptk', $validated['nuptk'])->first();
-        if ($nuptkWalkel && $nuptkWalkel->nuptk != $walkel->nuptk) {
+        if ($nuptkWalkel && $nuptkWalkel->nuptk != $request->nuptk) {
             if ($sessionRole == 3) {
                 return redirect()->route('home')
                     ->withErrors(['message' => 'NUPTK Sudah Terdaftar!']);

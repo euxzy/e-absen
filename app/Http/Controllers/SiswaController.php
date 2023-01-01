@@ -152,7 +152,9 @@ class SiswaController extends Controller
             'nisn' => 'min:10|max:10',
             'id_kelas' => 'numeric',
             'tgl_lahir' => 'date',
-            'gender' => 'numeric'
+            'gender' => 'numeric',
+            'photo' => 'image|max:2048',
+            'password' => 'required|min:6'
         ]);
 
         if ($validator->fails()) {
@@ -164,6 +166,30 @@ class SiswaController extends Controller
 
         $validated = $validator->validated();
         // dd($validated);
+
+        $nisSiswa = Siswa::query()->where('nis', $validated['nis'])->first();
+        if ($nisSiswa && $nisSiswa->nis != $request->nis) {
+            return redirect()->route('dashboard.siswa.add')->withErrors([
+                'message' => 'NIS Sudah Digunakan!'
+            ]);
+        }
+        $nisnSiswa = Siswa::query()->where('nisn', $validated['nisn'])->first();
+        if ($nisnSiswa && $nisnSiswa->nisn != $request->nisn) {
+            return redirect()->route('dashboard.siswa.add')->withErrors([
+                'message' => 'NISN Sudah Digunakan!'
+            ]);
+        }
+
+        if ($request->hasFile('photo')) {
+            $oldPhoto = Str::of($siswa->photo)->remove($request->getSchemeAndHttpHost() . '/storage');
+            if (Storage::disk('public')->exists($oldPhoto)) {
+                Storage::disk('public')->delete($oldPhoto);
+            }
+
+            $photo = $request->getSchemeAndHttpHost() . '/storage/' . $request->file('photo')->store('images/siswa', 'public');
+            $validated['photo'] = $photo;
+        }
+
 
         $siswa->update($validated);
         return redirect()->route('dashboard.siswa.detail', $validated['nis'])
