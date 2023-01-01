@@ -1,6 +1,6 @@
-{{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
-<section class="my-8 w-[80%] rounded-xl bg-white text-[#364356]">
-  <div class="py-4">
+{{-- Nothing in the world is as soft and yielding as water. --}}
+<div class="mb-6 flex w-full items-center justify-between rounded-xl bg-white py-6">
+  <div class="w-full py-4">
     <h1 class="px-5 font-semibold">List Siswa</h1>
 
     <div class="w-full">
@@ -24,7 +24,7 @@
             </li>
             <li class="w-40">{{ $siswa->nis }}</li>
             <li class="w-40">{{ $siswa->nisn }}</li>
-            <li class="w-20">{{ $siswa->kelas->tingkat . $siswa->kelas->nama }}</li>
+            <li class="w-20">{{ $kelas->tingkat . $kelas->nama }}</li>
             <li class="w-40"><a href="{{ route('dashboard.siswa.detail', $siswa->nis) }}">Detail</a></li>
           </ul>
         @endforeach
@@ -32,4 +32,4 @@
 
     </div>
   </div>
-</section>
+</div>

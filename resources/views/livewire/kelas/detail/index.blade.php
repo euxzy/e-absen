@@ -25,4 +25,6 @@
       </div>
     </div>
   </div>
+
+  @livewire('siswa.list.per-kelas', ['kelas' => $kelas])
 </div>
