@@ -10,7 +10,7 @@
   @endif
 
   @if (session('role') == 2)
-    @livewire('admin.dashboard.index')
+    @livewire('admin.dashboard.home')
   @endif
 
   @if (session('role') == 3)

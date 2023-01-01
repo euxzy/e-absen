@@ -37,6 +37,7 @@ Route::prefix('/dashboard')->middleware(['withAuth', 'isAdmin'])
       ->name('admin.')->group(function () {
         Route::get('/add', 'create')->name('add');
         Route::post('/store', 'store')->name('store');
+        Route::post('/update/{id}', 'update')->name('update');
       });
 
     Route::prefix('/siswa')->controller(SiswaController::class)

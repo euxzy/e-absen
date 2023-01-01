@@ -51,6 +51,30 @@ class AdminController extends Controller
         // dd($validated);
 
         Admin::query()->create($validated);
-        return redirect(route('auth.login'));
+        return redirect()->route('home')
+            ->with('message', 'Berhasil Menambah Data Admin!');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $admin = Admin::query()->where('id', $id)->first();
+        $validator = Validator::make($request->all(), [
+            'nama' => 'max:50',
+            'username' => 'max:50',
+            'email' => 'max:100',
+            'password' => 'required|min:8'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('home')
+                ->withErrors([
+                    'message' => 'Mohon Isi Semua Data Dengan Benar!'
+                ]);
+        }
+
+        $validated = $validator->validated();
+        $admin->update($validated);
+        return redirect()->route('home')
+            ->with('success', 'Data Admin berhasil Diupdate!');
     }
 }
