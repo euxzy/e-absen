@@ -1,5 +1,5 @@
 {{-- Close your eyes. Count to one. That is how long forever feels. --}}
-<div class="w-full rounded-xl bg-white py-5">
+<div class="mb-8 w-full rounded-xl bg-white py-5" x-show="showKelas" x-transition.duration.700ms>
   <h1 class="mb-5 text-xl font-bold">Tambah Data Kelas</h1>
 
   <form action="{{ route('dashboard.kelas.store') }}" method="POST" class="w-full rounded-xl bg-white p-6 text-left">

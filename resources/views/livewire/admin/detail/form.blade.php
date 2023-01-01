@@ -1,7 +1,7 @@
 {{-- Be like water. --}}
 <form action="{{ route('dashboard.admin.update', $admin->id) }}" method="POST" class="h-max w-80 rounded-xl bg-white p-6">
   @csrf
-  <h1 class="mb-5 text-xl font-bold">Data Wali Kelas</h1>
+  <h1 class="mb-5 text-xl font-bold">Data Admin</h1>
   <div class="flex w-full flex-col gap-3 text-lg">
     <label for="nama" class="relative pb-3">
       <p class="text-xs opacity-80">Nama</p>

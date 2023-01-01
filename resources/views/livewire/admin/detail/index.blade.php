@@ -1,5 +1,5 @@
 {{-- The best athlete wants his opponent at his best. --}}
-<div class="my-8 w-[79%] rounded-xl pb-40 text-[#364356]" x-data="{ isDisabled: true }">
+<div class="my-8 w-[79%] rounded-xl pb-40 text-[#364356]" x-data="{ isDisabled: true, showKelas: false }">
   <div class="mb-6 flex w-full items-center justify-between rounded-xl bg-white p-4">
     <div class="flex items-end gap-4">
       <div class="h-32 w-32 overflow-hidden rounded-xl"><img class="w-full" src="" alt="">
