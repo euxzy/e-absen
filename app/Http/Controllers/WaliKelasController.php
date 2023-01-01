@@ -80,7 +80,9 @@ class WaliKelasController extends Controller
             'nama' => 'max:50',
             'nuptk' => 'min:16|max:16',
             'tgl_lahir' => 'date',
-            'gender' => 'numeric'
+            'gender' => 'numeric',
+            'photo' => 'image|max:2048',
+            'password' => 'required|min:6'
         ]);
 
         if ($validator->fails()) {
@@ -92,9 +94,33 @@ class WaliKelasController extends Controller
 
         $validated = $validator->validated();
 
-        $walkel->update($validated);
-
         $sessionRole = session('role');
+
+        $nuptkWalkel = WaliKelas::query()->where('nuptk', $validated['nuptk'])->first();
+        if ($nuptkWalkel && $nuptkWalkel->nuptk != $walkel->nuptk) {
+            if ($sessionRole == 3) {
+                return redirect()->route('home')
+                    ->withErrors(['message' => 'NUPTK Sudah Terdaftar!']);
+            }
+            // dd($walkel->nuptk);
+
+            return redirect()->route('dashboard.walkel.detail', $validated['nuptk'])
+                ->withErrors([
+                    'message' => 'NUPTK Sudah Terdaftar!'
+                ]);
+        }
+
+        if ($request->hasFile('photo')) {
+            $oldPhoto = Str::of($walkel->photo)->remove($request->getSchemeAndHttpHost() . '/storage');
+            if (Storage::disk('public')->exists($oldPhoto)) {
+                Storage::disk('public')->delete($oldPhoto);
+            }
+
+            $photo = $request->getSchemeAndHttpHost() . '/storage/' . $request->file('photo')->store('images/walkel', 'public');
+            $validated['photo'] = $photo;
+        }
+
+        $walkel->update($validated);
         if ($sessionRole == 3) {
             return redirect()->route('home')
                 ->with('success', 'Update Data Wali Kelas Berhasil!');
