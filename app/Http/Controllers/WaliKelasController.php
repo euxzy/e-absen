@@ -93,8 +93,15 @@ class WaliKelasController extends Controller
         $validated = $validator->validated();
 
         $walkel->update($validated);
+
+        $sessionRole = session('role');
+        if ($sessionRole == 3) {
+            return redirect()->route('home')
+                ->with('success', 'Update Data Wali Kelas Berhasil!');
+        }
+
         return redirect()->route('dashboard.walkel.detail', $validated['nuptk'])
-            ->with('updateSuccess', 'Update Data Wali Kelas Berhasil!');
+            ->with('success', 'Update Data Wali Kelas Berhasil!');
     }
 
     public function destroy(Request $request, $nuptk)

@@ -32,9 +32,9 @@ Route::prefix('/auth')
     Route::post('/login', 'authLogin')->name('login.check');
   });
 
-Route::prefix('/dashboard')->middleware(['withAuth', 'isAdmin'])
+Route::prefix('/dashboard')->middleware(['withAuth'])
   ->name('dashboard.')->group(function () {
-    Route::prefix('admin')->controller(AdminController::class)
+    Route::prefix('/admin')->controller(AdminController::class)->middleware(['isAdmin'])
       ->name('admin.')->group(function () {
         Route::get('/add', 'create')->name('add');
         Route::post('/store', 'store')->name('store');
@@ -43,12 +43,12 @@ Route::prefix('/dashboard')->middleware(['withAuth', 'isAdmin'])
 
     Route::prefix('/siswa')->controller(SiswaController::class)
       ->name('siswa.')->group(function () {
-        Route::get('/add', 'create')->name('add');
-        Route::post('/store', 'store')->name('store');
+        Route::get('/add', 'create')->name('add')->middleware(['isAdmin']);
+        Route::post('/store', 'store')->name('store')->middleware(['isAdmin']);
         Route::get('/list', 'index')->name('list');
         Route::get('/detail/{nis}', 'detail')->name('detail');
         Route::post('/update/{nis}', 'update')->name('update');
-        Route::post('/delete/{nis}', 'destroy')->name('delete');
+        Route::post('/delete/{nis}', 'destroy')->name('delete')->middleware(['isAdmin']);
       });
 
     Route::prefix('/walkel')->controller(WaliKelasController::class)
@@ -63,7 +63,7 @@ Route::prefix('/dashboard')->middleware(['withAuth', 'isAdmin'])
 
     Route::prefix('/kelas')->controller(KelasController::class)
       ->name('kelas.')->group(function () {
-        Route::post('/store', 'store')->name('store');
+        Route::post('/store', 'store')->name('store')->middleware(['isAdmin']);
       });
   });
 
