@@ -1,5 +1,6 @@
 {{-- The best athlete wants his opponent at his best. --}}
-<form action="{{ route('dashboard.siswa.update', $siswa->nis) }}" method="POST" class="w-80 rounded-xl bg-white p-6">
+<form action="{{ route('dashboard.siswa.update', $siswa->nis) }}" method="POST"
+  class="h-max w-80 rounded-xl bg-white p-6">
   @csrf
   <h1 class="mb-5 text-xl font-bold">Data Siswa</h1>
   <div class="flex w-full flex-col gap-3 text-lg">

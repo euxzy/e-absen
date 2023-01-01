@@ -28,6 +28,10 @@
   <div class="flex w-full justify-between">
     @livewire('siswa.detail.form', ['nis' => $siswa->nis])
 
-    @livewire('siswa.detail.persentase', ['nis' => $siswa->nis])
+    <div class="h-max w-[650px] rounded-xl text-center">
+      @livewire('siswa.detail.persentase', ['nis' => $siswa->nis])
+
+      @livewire('siswa.detail.list-absen', ['idSiswa' => $siswa->id, 'nama' => $siswa->nama])
+    </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 {{-- If your happiness depends on money, you will never be happy with yourself. --}}
-<div class="h-max w-[650px] rounded-xl px-6 pb-10 text-center">
+<div class="h-max w-[650px] rounded-xl pb-10 text-center">
   <div class="mb-8 flex w-full items-center justify-between rounded-xl bg-white py-5 px-6">
     <h1 class="text-xl font-bold">List Semua Kelas</h1>
     <p><a
